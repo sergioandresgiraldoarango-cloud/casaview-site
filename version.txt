@@ -1,1 +1,3 @@
 ﻿Casaview v1.0.1 - despliegue automatico GitHub->Netlify certificado el 6 de julio de 2026
+
+redeploy: registrar Netlify Form "contacto" (17-jul)
