@@ -55,10 +55,11 @@
   <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline preload="metadata" poster="assets/video/casaview-hero-poster.jpg" aria-hidden="true">
     <source src="assets/video/casaview-hero.mp4" type="video/mp4">
   </video>
-  <!-- capa cálida para que los textos oscuros sigan legibles sobre el video -->
-  <div class="absolute inset-0 z-0 bg-gradient-to-br from-white/88 via-white/62 to-white/30"></div>
+  <!-- velo cálido MUY sutil, solo del lado del texto (izq); el resto del video queda a la vista -->
+  <div class="absolute inset-0 z-0 bg-gradient-to-r from-[#FFF6EA]/55 via-[#FFF6EA]/10 to-transparent"></div>
   <div class="sol w-[420px] h-[420px] top-[-160px] right-[-80px]"></div>
-  <div class="max-w-6xl mx-auto relative z-10">
+  <!-- sombra cálida suave en el texto para que resalte sobre el video sin taparlo -->
+  <div class="max-w-6xl mx-auto relative z-10" style="text-shadow:0 1px 16px rgba(255,247,236,.6)">
     <p class="reveal text-[#B4530A] text-sm tracking-[0.2em] uppercase mb-6">Manizales · Caldas · Eje Cafetero</p>
     <h1 class="reveal serif text-5xl md:text-7xl lg:text-8xl leading-[1.04] tracking-tight max-w-4xl" style="transition-delay:.05s">
       Las vistas que vale la pena <em class="grad-text">vivir.</em>
