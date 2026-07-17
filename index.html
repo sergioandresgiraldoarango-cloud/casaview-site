@@ -44,6 +44,7 @@
       <a href="#recomendados" class="hover:text-[#F07D13] transition">Recomendados</a>
       <a href="#historia" class="hover:text-[#F07D13] transition">Historia</a>
       <a href="#alojamientos" class="hover:text-[#F07D13] transition">Para alojamientos</a>
+      <a href="#contacto" class="hover:text-[#F07D13] transition">Contacto</a>
     </div>
     <a href="https://www.instagram.com/casaviewcaldas/" target="_blank" rel="noopener" class="grad-bg text-white rounded-full px-5 py-2 text-sm font-medium hover:scale-105 transition inline-block">Síguenos</a>
   </div>
@@ -165,10 +166,33 @@
         fotografía y video profesional, y difusión en nuestras redes y las de ellas.
         Así lo hicimos en Atardeceres del Café — y tu lugar puede ser el siguiente.
       </p>
+      <p class="text-white/60 text-sm md:text-base leading-relaxed mt-4">
+        Además del desarrollo audiovisual, trabajamos con una <span class="text-white font-medium">agencia de creadoras de contenido</span>,
+        y construimos la <span class="text-white font-medium">estrategia de contenido con cada una de ellas</span> — para que tu lugar llegue a la audiencia correcta.
+      </p>
     </div>
     <div class="reveal mt-10 md:mt-0 shrink-0">
       <a href="https://wa.me/573154701001?text=Hola%20Casa%20View%2C%20quiero%20que%20recomienden%20mi%20lugar." target="_blank" rel="noopener noreferrer" class="grad-bg text-white rounded-full px-10 py-4 text-sm font-medium hover:scale-105 transition inline-block shadow-lg shadow-orange-900/30">Cuéntanos de tu lugar por WhatsApp</a>
     </div>
+  </div>
+</section>
+
+<!-- contacto -->
+<section id="contacto" class="px-6 py-20 md:py-28" style="background:#FFF9F0">
+  <div class="max-w-2xl mx-auto text-center">
+    <p class="reveal text-[#B4530A] text-sm tracking-[0.2em] uppercase mb-4">Contacto</p>
+    <h2 class="reveal serif text-3xl md:text-5xl tracking-tight mb-4">Hablemos de tu <em class="grad-text">lugar</em></h2>
+    <p class="reveal text-[#5C554B] text-sm md:text-base leading-relaxed mb-8">Déjanos tus datos y te contactamos por WhatsApp o correo. ¿Prefieres escribir ya? Usa el botón de WhatsApp.</p>
+    <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="form-contacto" class="reveal grid gap-4 text-left">
+      <input type="hidden" name="form-name" value="contacto">
+      <p class="hidden"><label>No llenar: <input name="bot-field"></label></p>
+      <input name="nombre" type="text" required placeholder="Tu nombre" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+      <input name="lugar" type="text" placeholder="Nombre de tu alojamiento o lugar (opcional)" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+      <input name="contacto" type="text" required placeholder="WhatsApp o correo" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+      <textarea name="mensaje" rows="4" placeholder="Cuéntanos qué buscas" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition"></textarea>
+      <button type="submit" class="grad-bg text-white rounded-full px-8 py-3.5 text-sm font-medium hover:scale-105 transition shadow-lg shadow-orange-200 justify-self-center">Enviar</button>
+    </form>
+    <p id="form-ok" class="hidden mt-6 text-[#2E7D32] font-medium">¡Gracias! Recibimos tus datos y te contactamos pronto.</p>
   </div>
 </section>
 
@@ -210,6 +234,10 @@
 <script>
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'-40px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // formulario de contacto (Netlify Forms) con envío AJAX + mensaje de gracias en la misma página
+  const fc=document.getElementById('form-contacto');
+  if(fc){fc.addEventListener('submit',function(e){e.preventDefault();const body=new URLSearchParams(new FormData(fc)).toString();fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(){fc.style.display='none';document.getElementById('form-ok').classList.remove('hidden');}).catch(function(){fc.submit();});});}
 </script>
 </body>
 </html>
