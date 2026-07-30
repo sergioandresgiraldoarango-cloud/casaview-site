@@ -44,7 +44,7 @@
       <a href="#recomendados" class="hover:text-[#F07D13] transition">Recomendados</a>
       <a href="#historia" class="hover:text-[#F07D13] transition">Historia</a>
       <a href="#alojamientos" class="hover:text-[#F07D13] transition">Para alojamientos</a>
-      <a href="#contacto" class="hover:text-[#F07D13] transition">Contacto</a>
+      <a href="#contacto" class="hover:text-[#F07D13] transition">Diagnóstico gratis</a>
     </div>
     <a href="https://www.instagram.com/casaviewcaldas/" target="_blank" rel="noopener" class="grad-bg text-white rounded-full px-5 py-2 text-sm font-medium hover:scale-105 transition inline-block">Síguenos</a>
   </div>
@@ -171,28 +171,72 @@
         y construimos la <span class="text-white font-medium">estrategia de contenido con cada una de ellas</span> — para que tu lugar llegue a la audiencia correcta.
       </p>
     </div>
-    <div class="reveal mt-10 md:mt-0 shrink-0">
-      <a href="https://wa.me/573154701001?text=Hola%20Casa%20View%2C%20quiero%20que%20recomienden%20mi%20lugar." target="_blank" rel="noopener noreferrer" class="grad-bg text-white rounded-full px-10 py-4 text-sm font-medium hover:scale-105 transition inline-block shadow-lg shadow-orange-900/30">Cuéntanos de tu lugar por WhatsApp</a>
+    <div class="reveal mt-10 md:mt-0 shrink-0 flex flex-col items-stretch gap-3 md:min-w-[19rem]">
+      <a href="#contacto" class="grad-bg text-white rounded-full px-10 py-4 text-sm font-medium hover:scale-105 transition inline-block text-center shadow-lg shadow-orange-900/30">Diagnóstico gratis de tu lugar</a>
+      <a href="https://wa.me/573154701001?text=Hola%20Casa%20View%2C%20quiero%20que%20recomienden%20mi%20lugar." target="_blank" rel="noopener noreferrer" class="border border-white/25 text-white/90 rounded-full px-10 py-4 text-sm font-medium hover:bg-white/10 hover:border-white/40 transition inline-block text-center">O escríbenos por WhatsApp</a>
     </div>
   </div>
 </section>
 
-<!-- contacto -->
+<!-- diagnóstico gratis (imán del embudo de alojamientos) -->
 <section id="contacto" class="px-6 py-20 md:py-28" style="background:#FFF9F0">
   <div class="max-w-2xl mx-auto text-center">
-    <p class="reveal text-[#B4530A] text-sm tracking-[0.2em] uppercase mb-4">Contacto</p>
-    <h2 class="reveal serif text-3xl md:text-5xl tracking-tight mb-4">Hablemos de tu <em class="grad-text">lugar</em></h2>
-    <p class="reveal text-[#5C554B] text-sm md:text-base leading-relaxed mb-8">Déjanos tus datos y te contactamos por WhatsApp o correo. ¿Prefieres escribir ya? Usa el botón de WhatsApp.</p>
-    <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="form-contacto" class="reveal grid gap-4 text-left">
-      <input type="hidden" name="form-name" value="contacto">
+    <p class="reveal text-[#B4530A] text-sm tracking-[0.2em] uppercase mb-4">Gratis</p>
+    <h2 class="reveal serif text-3xl md:text-5xl tracking-tight mb-4">Diagnóstico de visibilidad de tu <em class="grad-text">alojamiento</em></h2>
+    <p class="reveal text-[#5C554B] text-sm md:text-base leading-relaxed mb-3">Cuéntanos cómo está hoy tu presencia digital y revisamos tu lugar: te enviamos por correo un diagnóstico corto con un puntaje y las 3 oportunidades más grandes que vemos.</p>
+    <p class="reveal text-[#5C554B]/80 text-xs md:text-sm mb-8">Son 8 preguntas rápidas. Sin costo y sin compromiso. Lo revisamos uno por uno, así que te llega en un par de días.</p>
+
+    <form name="diagnostico" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="form-diagnostico" class="reveal grid gap-4 text-left">
+      <input type="hidden" name="form-name" value="diagnostico">
       <p class="hidden"><label>No llenar: <input name="bot-field"></label></p>
-      <input name="nombre" type="text" required placeholder="Tu nombre" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
-      <input name="lugar" type="text" placeholder="Nombre de tu alojamiento o lugar (opcional)" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
-      <input name="contacto" type="text" required placeholder="WhatsApp o correo" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
-      <textarea name="mensaje" rows="4" placeholder="Cuéntanos qué buscas" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition"></textarea>
-      <button type="submit" class="grad-bg text-white rounded-full px-8 py-3.5 text-sm font-medium hover:scale-105 transition shadow-lg shadow-orange-200 justify-self-center">Enviar</button>
+
+      <input name="alojamiento" type="text" required placeholder="Nombre de tu alojamiento *" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+      <input name="web" type="text" placeholder="Sitio web (si no tienes, déjalo vacío)" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+      <input name="redes" type="text" placeholder="Tus redes: @instagram, Facebook…" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+
+      <label class="text-xs text-[#5C554B] -mb-2 ml-1">¿Cada cuánto publican en redes?</label>
+      <select name="frecuencia" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+        <option value="Varias veces por semana">Varias veces por semana</option>
+        <option value="Una vez por semana">Una vez por semana</option>
+        <option value="Cada tanto, sin plan" selected>Cada tanto, sin un plan fijo</option>
+        <option value="Casi nunca">Casi nunca</option>
+      </select>
+
+      <label class="text-xs text-[#5C554B] -mb-2 ml-1">¿Tienen fotos y video profesionales del lugar?</label>
+      <select name="material" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+        <option value="Si, material profesional reciente">Sí, material profesional y reciente</option>
+        <option value="Si, pero ya esta viejo" selected>Sí, pero ya está viejo</option>
+        <option value="Solo fotos de celular">Solo fotos de celular</option>
+        <option value="No tenemos">No tenemos</option>
+      </select>
+
+      <label class="text-xs text-[#5C554B] -mb-2 ml-1">¿Cómo están sus reseñas (Google, Booking, Airbnb)?</label>
+      <select name="resenas" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+        <option value="Muchas y buenas">Muchas y buenas</option>
+        <option value="Pocas pero buenas" selected>Pocas pero buenas</option>
+        <option value="Tenemos resenas malas por resolver">Tenemos reseñas malas por resolver</option>
+        <option value="No estamos en esas plataformas">No estamos en esas plataformas</option>
+      </select>
+
+      <label class="text-xs text-[#5C554B] -mb-2 ml-1">¿Han trabajado con creadores de contenido?</label>
+      <select name="creadores" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+        <option value="Si, varias veces">Sí, varias veces</option>
+        <option value="Una vez, como prueba">Una vez, como prueba</option>
+        <option value="Nunca, pero nos interesa" selected>Nunca, pero nos interesa</option>
+        <option value="Nunca y no lo teniamos pensado">Nunca y no lo teníamos pensado</option>
+      </select>
+
+      <textarea name="reto" rows="3" placeholder="¿Cuál es hoy su mayor reto? (llenar temporada baja, darse a conocer, competir con otros…)" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition"></textarea>
+
+      <div class="h-px bg-[#231F1A]/10 my-2"></div>
+      <p class="text-xs text-[#5C554B] ml-1 -mb-2">¿A dónde te enviamos el diagnóstico?</p>
+      <input name="email" type="email" required placeholder="Tu correo *" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+      <input name="contacto" type="text" required placeholder="Tu WhatsApp *" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
+
+      <button type="submit" class="grad-bg text-white rounded-full px-8 py-3.5 text-sm font-medium hover:scale-105 transition shadow-lg shadow-orange-200 justify-self-center">Quiero mi diagnóstico gratis</button>
+      <p class="text-[11px] text-[#5C554B]/70 text-center">Usamos tus datos solo para enviarte el diagnóstico y contactarte. Nada de spam.</p>
     </form>
-    <p id="form-ok" class="hidden mt-6 text-[#2E7D32] font-medium">¡Gracias! Recibimos tus datos y te contactamos pronto.</p>
+    <p id="form-ok" class="hidden mt-6 text-[#2E7D32] font-medium">¡Gracias! Recibimos tus respuestas. Revisamos tu lugar y te enviamos el diagnóstico al correo en un par de días.</p>
   </div>
 </section>
 
@@ -236,8 +280,35 @@
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
   // formulario de contacto (Netlify Forms) con envío AJAX + mensaje de gracias en la misma página
-  const fc=document.getElementById('form-contacto');
-  if(fc){fc.addEventListener('submit',function(e){e.preventDefault();const body=new URLSearchParams(new FormData(fc)).toString();fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(){fc.style.display='none';document.getElementById('form-ok').classList.remove('hidden');}).catch(function(){fc.submit();});});}
+  // Formulario del diagnóstico. Se envía a DOS destinos a propósito:
+  //  1) Netlify Forms  -> red de seguridad: el lead queda guardado SIEMPRE, aunque n8n esté apagado o falle.
+  //  2) Webhook de n8n -> genera el diagnóstico con IA, crea el lead en el CRM y manda el Correo 1.
+  //     OJO (30-jul-2026): ese workflow está APAGADO A PROPÓSITO. Mientras tanto Sergio entrega los
+  //     diagnósticos a mano desde las respuestas que llegan por Netlify (decisión: validar antes de
+  //     automatizar). Esta llamada falla en silencio y no rompe nada; el día que se active, empieza a
+  //     funcionar sin tocar el código -- pero hay que ajustar el texto de "un par de días".
+  // A n8n se le habla con 'no-cors' + urlencoded (petición simple, sin preflight): así no hace falta
+  // configurar CORS en el webhook. El precio es que no podemos leer su respuesta, por eso el mensaje
+  // de gracias es el mismo en ambos casos y la captura la garantiza Netlify.
+  var N8N_LEAD_URL='https://n8n.srv1144525.hstgr.cloud/webhook/casaview-lead';
+  var fd=document.getElementById('form-diagnostico');
+  if(fd){fd.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=fd.querySelector('button[type=submit]');
+    if(btn){btn.disabled=true;btn.textContent='Enviando…';}
+    var datos=new FormData(fd);
+    var body=new URLSearchParams(datos).toString();
+
+    // 2) n8n: fire-and-forget, nunca bloquea ni rompe el envío
+    var soloCampos=new URLSearchParams(datos);
+    soloCampos.delete('form-name');soloCampos.delete('bot-field');
+    try{fetch(N8N_LEAD_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:soloCampos.toString()}).catch(function(){});}catch(err){}
+
+    // 1) Netlify: esta es la que decide si mostramos el "gracias"
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+      .then(function(){fd.style.display='none';document.getElementById('form-ok').classList.remove('hidden');})
+      .catch(function(){fd.submit();});
+  });}
 </script>
 </body>
 </html>
