@@ -1,2 +1,5 @@
-# Fuente pesada del video (NO desplegar; se usa la versión comprimida casaview-hero.mp4)
+# Masters pesados de video: NO se despliegan. En el sitio solo van las versiones comprimidas.
+#   assets/video/casaview-hero-v2.mp4     <- hero actual (master: F:\HERO CASAVIEW.mp4, 163 MB)
+#   assets/video/casaview-atardeceres.mp4 <- caso Atardeceres (master: CASAVIEW HERO 1.mp4, 113 MB)
 assets/video/CASAVIEW HERO 1.mp4
+assets/video/*HERO CASAVIEW*.mp4

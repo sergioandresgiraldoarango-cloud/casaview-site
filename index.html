@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casaview — Alojamientos y destinos que vale la pena vivir · Manizales y Caldas</title>
-<meta name="description" content="Casaview es la recomendadora de alojamientos y destinos turísticos de Manizales y Caldas. Lugares reales, mostrados por creadoras reales.">
+<title>Casaview — Desarrollo audiovisual y estrategia digital para alojamientos del Eje Cafetero</title>
+<meta name="description" content="Casaview es la agencia de desarrollo audiovisual y estrategia digital para los alojamientos y destinos turísticos TOP del Eje Cafetero: producción de contenido, creadoras UGC y estrategia para llenar temporadas.">
 <link rel="icon" type="image/png" href="assets/cv-isotipo.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,21 +53,22 @@
 <!-- hero -->
 <section class="sunset relative overflow-hidden px-6 pt-20 pb-24 md:pt-28 md:pb-32">
   <!-- video de fondo del hero (comprimido para web; el gradiente 'sunset' queda de respaldo) -->
-  <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline preload="metadata" poster="assets/video/casaview-hero-poster.jpg" aria-hidden="true">
-    <source src="assets/video/casaview-hero.mp4" type="video/mp4">
+  <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline preload="metadata" poster="assets/video/casaview-hero-v2-poster.jpg" aria-hidden="true">
+    <source src="assets/video/casaview-hero-v2.mp4" type="video/mp4">
   </video>
   <!-- velo cálido MUY sutil, solo del lado del texto (izq); el resto del video queda a la vista -->
-  <div class="absolute inset-0 z-0 bg-gradient-to-r from-[#FFF6EA]/55 via-[#FFF6EA]/10 to-transparent"></div>
+  <!-- Velo calido. Se reforzo el 30-jul: el titulo nuevo es mas largo y se extiende sobre la zona que antes
+       quedaba sin velo, donde el texto oscuro perdia contraste sobre el video. -->
+  <div class="absolute inset-0 z-0 bg-gradient-to-r from-[#FFF6EA]/80 via-[#FFF6EA]/45 to-[#FFF6EA]/10"></div>
   <div class="sol w-[420px] h-[420px] top-[-160px] right-[-80px]"></div>
   <!-- sombra cálida suave en el texto para que resalte sobre el video sin taparlo -->
   <div class="max-w-6xl mx-auto relative z-10" style="text-shadow:0 1px 16px rgba(255,247,236,.6)">
     <p class="reveal text-[#B4530A] text-sm tracking-[0.2em] uppercase mb-6">Manizales · Caldas · Eje Cafetero</p>
-    <h1 class="reveal serif text-5xl md:text-7xl lg:text-8xl leading-[1.04] tracking-tight max-w-4xl" style="transition-delay:.05s">
-      Las vistas que vale la pena <em class="grad-text">vivir.</em>
+    <h1 class="reveal serif text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-tight max-w-4xl" style="transition-delay:.05s">
+      Desarrollo audiovisual y estrategia digital para alojamientos y destinos <em class="grad-text">TOP</em> del Eje Cafetero.
     </h1>
     <p class="reveal text-[#5C554B] text-base md:text-lg leading-relaxed mt-8 max-w-xl" style="transition-delay:.1s">
-      <span class="text-[#231F1A] font-medium">La casa de los mejores alojamientos y vistas de Caldas.</span>
-      Lugares reales, visitados y mostrados por creadoras reales — para que llegues sabiendo que vale la pena.
+      <span class="text-[#231F1A] font-medium">La casa del mejor desarrollo audiovisual de los alojamientos y destinos TOP del Eje Cafetero.</span>
     </p>
     <div class="reveal flex gap-3 mt-10 flex-wrap" style="transition-delay:.15s">
       <a href="#recomendados" class="grad-bg text-white rounded-full px-8 py-3.5 text-sm font-medium hover:scale-105 transition inline-block shadow-lg shadow-orange-200">Ver recomendados</a>
@@ -116,14 +117,25 @@
           <h3 class="serif text-3xl md:text-4xl leading-tight">Atardeceres del Café</h3>
           <p class="text-white/90 text-sm leading-relaxed mt-4">Un hotel con los atardeceres más honestos del Eje Cafetero: glamping, spa, piscina y cocina que vale el viaje.</p>
         </div>
-        <p class="relative text-white/70 text-xs mt-8">Nuestro primer recomendado — lo vivimos con 14 creadoras en una jornada completa.</p>
+        <p class="relative text-white/70 text-xs mt-8">Producción audiovisual completa de Casaview — una jornada entera con 14 creadoras UGC.</p>
       </div>
       <div class="md:w-3/5 p-10 md:p-12 flex flex-col justify-center">
+        <!-- Material del propio trabajo (antes era el video del hero). NO va en autoplay a proposito:
+             con dos videos automaticos la pagina cargaria ~27 MB. Con poster + preload="none" solo se
+             descarga si el visitante decide verlo, y para una pieza de portafolio el boton de play es
+             lo correcto: es trabajo para mirar, no ambiente de fondo. -->
+        <video class="w-full rounded-2xl mb-6 aspect-video object-cover bg-[#231F1A]/5" controls muted playsinline preload="none" poster="assets/video/casaview-hero-poster.jpg">
+          <source src="assets/video/casaview-atardeceres.mp4" type="video/mp4">
+        </video>
+        <p class="text-[#5C554B] text-sm leading-relaxed mb-4">
+          En julio produjimos allá una jornada completa: recorrido por las habitaciones, la suite, el spa,
+          la piscina y el glamping, con música en vivo al atardecer y registro audiovisual profesional
+          — material suficiente para meses de contenido del hotel.
+        </p>
         <p class="text-[#5C554B] text-sm leading-relaxed mb-6">
-          En julio hicimos allá nuestra primera experiencia Casaview: un día entero recorriendo
-          las habitaciones, la suite, el spa, la piscina y el glamping con nuestras creadoras —
-          con música en vivo al atardecer. <span class="text-[#231F1A] font-medium">El recorrido completo
-          llega muy pronto a nuestras redes.</span>
+          <span class="text-[#231F1A] font-medium">En colaboración con Icons.Live</span>, la agencia de
+          creadoras de contenido UGC que aportó el <span class="text-[#231F1A] font-medium">roster de 14
+          creadoras</span> que protagonizaron la jornada.
         </p>
         <div class="flex gap-3 flex-wrap">
           <a href="https://www.instagram.com/casaviewcaldas/" target="_blank" rel="noopener" class="grad-bg text-white rounded-full px-6 py-2.5 text-sm font-medium hover:scale-105 transition inline-block">Ver el contenido</a>
