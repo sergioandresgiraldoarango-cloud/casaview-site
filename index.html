@@ -233,10 +233,20 @@
       <input name="email" type="email" required placeholder="Tu correo *" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
       <input name="contacto" type="text" required placeholder="Tu WhatsApp *" class="rounded-2xl border border-[#231F1A]/12 bg-white px-5 py-3.5 text-sm focus:outline-none focus:border-[#F07D13] transition">
 
+      <!-- Autorizacion de tratamiento de datos: Ley 1581/2012. La politica (_fabrica-contenido/CRM-DATOS.md §3)
+           exige para formularios web "aviso + checkbox de tratamiento" = autorizacion EXPLICITA. El texto
+           aceptado viaja con el envio para que el consentimiento quede DEMOSTRABLE en el registro, no solo
+           mostrado en pantalla. -->
+      <input type="hidden" name="autorizacion_texto" value="v1 (2026-07-30): Autorizo a Casa View a usar mis datos para enviarme el diagnostico y contactarme sobre sus servicios. Puedo pedir su eliminacion cuando quiera.">
+      <label class="flex items-start gap-3 text-left text-xs text-[#5C554B] leading-relaxed">
+        <input name="autorizacion" type="checkbox" value="SI" required class="mt-0.5 h-4 w-4 shrink-0 accent-[#F07D13]">
+        <span>Autorizo a Casa View a usar mis datos para <strong>enviarme el diagnóstico y contactarme sobre sus servicios</strong>. No se comparten con terceros ni con otras marcas, y puedo pedir que los eliminen cuando quiera escribiendo a <a href="mailto:hola@casaview.co" class="underline hover:text-[#F07D13]">hola@casaview.co</a>. <a href="https://sergioandresgiraldoarango.com/tratamiento-de-datos.html" target="_blank" rel="noopener noreferrer" class="underline hover:text-[#F07D13]">Ver política de tratamiento de datos</a>.</span>
+      </label>
+
       <button type="submit" class="grad-bg text-white rounded-full px-8 py-3.5 text-sm font-medium hover:scale-105 transition shadow-lg shadow-orange-200 justify-self-center">Quiero mi diagnóstico gratis</button>
-      <p class="text-[11px] text-[#5C554B]/70 text-center">Usamos tus datos solo para enviarte el diagnóstico y contactarte. Nada de spam.</p>
     </form>
     <p id="form-ok" class="hidden mt-6 text-[#2E7D32] font-medium">¡Gracias! Recibimos tus respuestas. Revisamos tu lugar y te enviamos el diagnóstico al correo en un par de días.</p>
+    <p id="form-error" class="hidden mt-6 text-[#B4530A] font-medium">No pudimos registrar tus datos. Por favor escríbenos por WhatsApp al <a href="https://wa.me/573154701001" target="_blank" rel="noopener noreferrer" class="underline">315 470 1001</a> o a <a href="mailto:hola@casaview.co" class="underline">hola@casaview.co</a> y te atendemos de una vez.</p>
   </div>
 </section>
 
@@ -279,36 +289,38 @@
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'-40px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // formulario de contacto (Netlify Forms) con envío AJAX + mensaje de gracias en la misma página
-  // Formulario del diagnóstico. Se envía a DOS destinos a propósito:
-  //  1) Netlify Forms  -> red de seguridad: el lead queda guardado SIEMPRE, aunque n8n esté apagado o falle.
-  //  2) Webhook de n8n -> genera el diagnóstico con IA, crea el lead en el CRM y manda el Correo 1.
-  //     OJO (30-jul-2026): ese workflow está APAGADO A PROPÓSITO. Mientras tanto Sergio entrega los
-  //     diagnósticos a mano desde las respuestas que llegan por Netlify (decisión: validar antes de
-  //     automatizar). Esta llamada falla en silencio y no rompe nada; el día que se active, empieza a
-  //     funcionar sin tocar el código -- pero hay que ajustar el texto de "un par de días".
-  // A n8n se le habla con 'no-cors' + urlencoded (petición simple, sin preflight): así no hace falta
-  // configurar CORS en el webhook. El precio es que no podemos leer su respuesta, por eso el mensaje
-  // de gracias es el mismo en ambos casos y la captura la garantiza Netlify.
-  var N8N_LEAD_URL='https://n8n.srv1144525.hstgr.cloud/webhook/casaview-lead';
+  // FORMULARIO DEL DIAGNOSTICO -> Netlify Forms (unico destino).
+  //
+  // Auditoria Codex 30-jul-2026 (ALTO). Dos defectos corregidos aqui, NO repetirlos:
+  //  1) fetch NO rechaza ante 404/500 -- solo ante fallo de red. El handler anterior mostraba "¡Gracias!"
+  //     aunque Netlify respondiera error: el lead se perdia y la persona se iba creyendo que quedo
+  //     registrada. Ahora se exige r.ok y, si falla, se MANTIENE el formulario y se ofrece WhatsApp.
+  //  2) Se retiro la llamada latente al webhook de n8n. Mandaba correo y WhatsApp (datos personales)
+  //     fire-and-forget a un workflow apagado y sin auditar, sin poder comprobar que pasaba con ellos.
+  //     Cuando el embudo se automatice, la via correcta es el webhook SALIENTE de Netlify (servidor a
+  //     servidor, auditable), no una llamada desde el navegador.
   var fd=document.getElementById('form-diagnostico');
   if(fd){fd.addEventListener('submit',function(e){
     e.preventDefault();
     var btn=fd.querySelector('button[type=submit]');
+    var okBox=document.getElementById('form-ok');
+    var errBox=document.getElementById('form-error');
+    errBox.classList.add('hidden');
     if(btn){btn.disabled=true;btn.textContent='Enviando…';}
-    var datos=new FormData(fd);
-    var body=new URLSearchParams(datos).toString();
-
-    // 2) n8n: fire-and-forget, nunca bloquea ni rompe el envío
-    var soloCampos=new URLSearchParams(datos);
-    soloCampos.delete('form-name');soloCampos.delete('bot-field');
-    try{fetch(N8N_LEAD_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:soloCampos.toString()}).catch(function(){});}catch(err){}
-
-    // 1) Netlify: esta es la que decide si mostramos el "gracias"
+    var body=new URLSearchParams(new FormData(fd)).toString();
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
-      .then(function(){fd.style.display='none';document.getElementById('form-ok').classList.remove('hidden');})
-      .catch(function(){fd.submit();});
+      .then(function(r){
+        if(!r.ok){throw new Error('HTTP '+r.status);}   // sin esto, un 500 se veia como exito
+        fd.style.display='none';
+        okBox.classList.remove('hidden');
+      })
+      .catch(function(){
+        // El formulario NO se oculta: la persona conserva lo que escribio y tiene una salida real.
+        errBox.classList.remove('hidden');
+        if(btn){btn.disabled=false;btn.textContent='Reintentar envío';}
+      });
   });}
+
 </script>
 </body>
 </html>
